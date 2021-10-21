@@ -1,0 +1,36 @@
+# a) Generalized Least Squares
+inv(X(n:2500,m:500)'*inv(M[pd])*X)*X'*inv(M)*y || inv(X'*inv(M)*X)*X'*inv(M)*y
+
+# b) Optimization - TODO it includes two results and we do not currently support that.
+
+# c) signal Processing
+inv(inv(A(n:2000,n)')*B'*B*inv(A) + R(m:1999,n)'*L(m,m)[d]*R) * inv(A')*B'*B*inv(A)*y || inv(inv(A')*B'*B*inv(A) + R'*L*R) * inv(A')*B'*B*inv(A)*y
+
+# d) Triangular matrix inversion - TODO it includes two results and we do not currently support that.
+
+# e) Ensemble Kalman Filter - I corrected it: The paper has the dimensions all wrong. (Confusing n and N and more!)
+Xb(n:2000,N:200) + inv(inv(B[psd])+H(n,n)'*inv(R[psd])*H) * (Y(n,N)-H*Xb) || Xb + inv(inv(B)+H'*inv(R)*H) * (Y-H*Xb)
+
+# f) Image Restoration  # For LinA, had to rename lamdba to a and sigma to b (they are scalars)
+inv(H(m:1000,n:5000)'*H+a[s,pd]*b[s,pd]^2*eye) * (H'*y+a*b^2*(v-u)) || inv(H'*H+a*b^2*eye) * (H'*y+a*b^2*(v-u))
+
+# g) Rand. Matrix Inversion
+X(n:5000,n) + (eye - X*A(n,n)') * (S(n,q:500)*inv(S'*A'*W(n,n)[pd]*A*S)*S') * A'*W || X + (eye - X*A') * (S*inv(S'*A'*W*A*S)*S') * A'*W
+
+# h) Rand. Matrix Inversion
+S(n:5000,q:500)*inv(S'*A[pd]*S)*S' + (eye - S*inv(S'*A*S)*S'*A) *X(n,n)* (eye - A*S*inv(S'*A*S)*S') || S*inv(S'*A*S)*S' + (eye - S*inv(S'*A*S)*S'*A) *X* (eye - A*S*inv(S'*A*S)*S')
+
+# i) Stoch. Newton || for LinA, had to rename k to a
+a/(a-1) * B(n:1000,n)[pd] * (eye - A(m:5000,n)'*W(m,l:625)*inv((a-1)*eye + W'*A*B*A'*W)*W'*A*B) || a/(a-1) * B * (eye - A'*W*inv((a-1)*eye + W'*A*B*A'*W)*W'*A*B)
+
+# j) Tikhonov reg.
+inv(A(n:5000,m:50)'*A+Gamma(m,m)'*Gamma)*A'*b || inv(A'*A+Gamma'*Gamma)*A'*b
+
+# k) Gen. Tikhonov reg. || For LinA, had to rename b to y (it's a vector).
+inv(A(n:5000,m:50)'*P[psd]*A+Q[psd])*(A'*P*y+Q*x) || inv(A'*P*A+Q)*(A'*P*y+Q*x)
+
+# l) LMMSE estimator
+Cx(n:2000,n)[psd]*A(m:1500,n)'*inv(A*Cx*A'+Cz[psd]) * (y-A*x) +x || Cx*A'*inv(A*Cx*A'+Cz) * (y-A*x) +x
+
+# m) Kalman Filter - TODO it includes two results and we do not currently support that.
+

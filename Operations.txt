@@ -1,0 +1,18 @@
+=== BINARY ===
++, -, .*, ./
+S*, S/
+M*
+pow (for scalar^scalar)
+
+
+=== UNARY ===
+u-
+sum, trace
+T
+det, inv,
+diag(v/cv->M), diag2 (M->v)
+norm (1 and 2, vector and matrix each)
+relu (hard at zero),
+exp, log
+sin, cos, tan, arcsin, arccos, artan, tanh
+abs, sign

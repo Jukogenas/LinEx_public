@@ -1,0 +1,9 @@
+deprecated/__pycache__/*
+testing/__pycache__/*
+expressions/__pycache__/*
+linA_snapshot/__pycache__/*
+LinEx/__pycache__/*
+__pycache__/*
+.vscode/
+.idea/
+test.py

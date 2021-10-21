@@ -1,0 +1,128 @@
+# Empty lines or those with '#' as the first none-whitespace are skipped.
+# But '#' anywhere later in a line is NOT ignored.
+
+### Many extremely basic calculations, to cover all functions:
+
+# No function:
+1
+a
+x
+A
+
+# Unary element-wise functions:
+-1
+-a
+-x
+-A
+
+sin(1)
+sin(a)
+sin(x)
+sin(A)
+cos(1)
+cos(a)
+cos(x)
+cos(A)
+tan(1)
+tan(a)
+tan(x)
+tan(A)
+arcsin(1)
+arcsin(a)
+arcsin(x)
+arcsin(A)
+arccos(1)
+arccos(a)
+arccos(x)
+arccos(A)
+arctan(1)
+arctan(a)
+arctan(x)
+arctan(A)
+exp(1)
+exp(a)
+exp(x)
+exp(A)
+log(1)
+log(a)
+log(x)
+log(A)
+tanh(1)
+tanh(a)
+tanh(x)
+tanh(A)
+abs(1)
+abs(a)
+abs(x)
+abs(A)
+sign(1)
+sign(a)
+sign(x)
+sign(A)
+relu(1)
+relu(a)
+relu(x)
+relu(A)
+
+# Other unary functions:
+#sum(1)
+#sum(a) <- this should really just work and return a
+sum(x)
+sum(A)
+#norm1(1)
+#norm1(a)
+norm1(x)
+norm1(A)
+#norm2(1)
+#norm2(a)
+norm2(x)
+norm2(A)
+tr(1)
+tr(a)
+# tr(x)
+tr(A)
+#det(1)
+#det(a)
+##det(x) <- this, for once, genuinely does not work
+det(A)
+#logdet(1)
+#logdet(a)
+##logdet(x)
+logdet(A)
+#inv(1)
+#inv(a)
+# inv(x)
+inv(A)
+
+# Binary element-wise functions:
+1+1
+a+1
+x+vector(1)
+A+eye
+
+a+b
+x+y
+A+B
+a-b
+x-y
+A-B
+a.*b
+x.*y
+A.*B
+a./b
+x./y
+A./B
+a.^b
+x.^b
+A.^b
+# Why are these two forbidden? They could work element-to-element wise (like .*)
+# How does the current behaviour of A.^b differ from A^b?
+# Actually, nevermind: A^b fails with a nonsensical error message.
+#x.^y
+#A.^B
+
+# Other binary functions:
+a*b
+x'*y
+A*B
+A/b

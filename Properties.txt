@@ -1,0 +1,28 @@
+Properties ...
+... that determine the shape of a variable:
+scalar
+vector
+covector
+matrix
+square_matrix
+
+... based on entries being zero:
+diagonal
+triangle_upper
+triangle_lower
+
+... based on values being the same:
+symmetric
+pseudo_scalar
+
+... for recognition of constants and neutral elements (internal use only):
+constant
+zero
+one
+
+... other (these are pretty complicated, but important for matrix factorization):
+pos_def
+pos_semi_def
+neg_def
+neg_semi_def
+(These also work for scalars, although the names are a bit misleading in that case).

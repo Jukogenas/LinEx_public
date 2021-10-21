@@ -1,0 +1,7 @@
+# Empty lines or those with '#' as the first none-whitespace are skipped.
+# But '#' anywhere later in a line is NOT ignored.
+
+# Note: These are tests that the original numpy version can't handle, so they are useless for comparison.
+
+X^4
+(x*x')^3

@@ -1,0 +1,132 @@
+# Empty lines or those with '#' as the first none-whitespace are skipped.
+# But '#' anywhere later in a line is NOT ignored.
+
+# Note: These lack order right now as a result to merging recently. Doesn't really matter, tho.
+
+0.5*x'*A*x
+sign(x)+x
+a
+A
+A'
+x
+x'
+x'*x
+x'*A*x
+(a+b)+(a-b)+(a*b)+(a/b)
+(a.*b)+(a./b)+(a.^b)
+sin(a)+cos(a)+tan(a)+arcsin(a)+arccos(a)
+exp(a)+log(a)+tanh(a)+abs(a)+sign(a)+relu(a)
+tr(a)+det(a)
+vector(a)+x
+matrix(a)+A
+(x'*y)
+(x*y')
+(x+y)+(x-y)
+(x'+y')+(x'-y')
+(x.*y)+(x./y)
+(x'.*y')+(x'./y')
+# (x.^2)
+(x'.^2)
+sin(x)+cos(x)+tan(x)+arcsin(x)+arccos(x)
+sin(x')+cos(x')+tan(x')+arcsin(x')+arccos(x')
+log(abs(x))
+log(abs(x'))
+exp(x)+tanh(x)+abs(x)+sign(x)+relu(x)
+exp(x')+tanh(x')+abs(x')+sign(x')+relu(x')
+sum(x)+norm1(x)+norm2(x)
+sum(x')+norm1(x')+norm2(x')+1
+(A+B)+(A-B)+(A*B)
+(A.*B)+(A./B)+(A.^2)
+sin(A)+cos(A)+tan(A)+arcsin(A)+arccos(A)
+exp(A)+log(abs(A))+tanh(A)+abs(A)+sign(A)+relu(A)
+tr(A)
+det(A*A')
+logdet(A*A')
+inv(A*A')
+sum(A)+norm1(A)+norm2(A)
+x+y
+x-y
+A+B
+A-B
+A*exp(x)
+(y.*v)'*x
+a^b
+
+# Some other calculations:
+sin(x)'*y
+
+
+tr(A*X'*B*X*C)
+(A*B+A*B)+5*(A*B+A*B)
+x'*(y+vector(3))
+y*(x'+vector(3)')
+norm1(A*x-y)^2
+norm2(A*x-y)^2
+norm1(A*X)^2
+norm2(A*X)^2
+x'*(matrix(4).*matrix(5).*matrix(6))*A
+d+f+c
+def+f+class
+a+b*c+d
+
+# Specifically for the Broadcasting optimizer:
+-(vector(a) + x)
+matrix(a)+X
+x'*vector(a)
+# -(vector(2)'*vector(3)) This does not have any known dimensions and will throw a keyerror.
+2*a*vector(2)*vector(3)'+X
+X*(vector(2)+vector(3))
+vector(2)'*x
+x'*vector(2)
+A*vector(2)*vector(3)'*B
+C*(vector(2)*vector(3)')*D
+vector(a)+x
+matrix(5)./X
+X.*eye
+# X.^eye
+X.*eye*eye
+X.*(eye*3).*Y
+
+# Broadcasts with eye
+eye*x
+eye*(eye*5)+X
+eye*B
+eye*5*B
+eye*sum(A)+B
+
+# diag shenanigans
+diag(x)
+diag(x')
+diag(diag(x))
+diag(diag(x'))
+diag(x)*vector(2)
+diag(diag(matrix(a)))*X
+diag(diag(vector(a))).*x
+diag(x)*(eye*5)
+
+# larger Calculations:
+sum(log(exp(-y.*(X*w)) + vector(1)))
+log(det(inv(X*X')))
+-X'*(exp(-y.*(X*w)).*y./(vector(1)+exp(-y.*(X*w))))
+-((diag(exp(-y.*(X*w)).*y.*exp(-y.*(X*w)).*y./((vector(1)+exp(-y.*(X*w))).*(vector(1)+exp(-y.*(X*w)))))*X)'*X-(diag(y.*exp(-y.*(X*w)).*y./(vector(1)+exp(-y.*(X*w))))*X)'*X)
+-((diag(exp(-y.*(X*w)).*y.*exp(-y.*(X*w)).*y./((vector(1)+exp(-y.*(X*w))).*(vector(1)+exp(-y.*(X*w)))))*X))
+a * sum(W .* W) - sum( log( (exp(X * W) ) ./ ((exp(X * W) * vector(1)) * vector(1)') + matrix(2.220446049250313e-16)) .* Y )
+2*a*W-(X'*(Y./(matrix(2.220446049250313e-16)+exp(X*W)./(exp(X*W)*vector(1)*vector(1)')).*exp(X*W)./(exp(X*W)*vector(1)*vector(1)'))-X'*diag(exp(X*W).*(Y./(matrix(2.220446049250313e-16)+exp(X*W)./(exp(X*W)*vector(1)*vector(1)')))./((exp(X*W)*vector(1)).*(exp(X*W)*vector(1))*vector(1)')*vector(1))*exp(X*W))
+
+# CSE
+# ((4*(3*(x+(y+z))))+(2*(x+(y+z))))
+# ((4*(3*(x+(y+z))))+(2*(x+(y+z))))+(y+z)
+# (a+b+c+d+e+(a+b+c+d+e+f))+(a+b+c+d+e+(a+b+c+d+e+f))+(a+b+c+d+e+f)
+
+# Other
+(a*b)+c*(d+e)*f
+# x.^y
+# A.^B
+norm2(x'*y)
+x.*y.*z
+vector(3).*x.*y.*z.*vector(4)
+vector(3)+x+y+z+vector(4)
+
+# softmax
+# softmax(X)
+# log(softmax(X))
