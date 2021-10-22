@@ -23,6 +23,7 @@ class Dimension():
     necessary.
     """
     dimCounter = 0
+    defaultNumeric = 100
     
     def __init__(self, origin: str, userAlias: str = '', numeric = 0):
         if userAlias:
@@ -143,12 +144,12 @@ class Dimension():
     def getAlias(self):
         return self.getData()[0]
 
-    def getNumericValue(self, defVal=100):
+    def getNumericValue(self):
         numeric = self.getData()[2]
         if numeric:
             return numeric
         else:
-            return defVal
+            return Dimension.defaultNumeric
 
     def anyRef(self):
         """

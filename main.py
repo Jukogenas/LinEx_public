@@ -1,11 +1,13 @@
 from expressions import Parser
 from LinEx.linex import LinExGenerator
+from expressions.dimension import Dimension
 from testing.testBench import makeTestData, code_to_function
 
 showNumbers = False # Set to true if you're ready to fill your console window ...
 
 if __name__ == "__main__":
 	example = "A*B*C+A*B*C"
+	Dimension.defaultNumeric = 42 # It usually uses 100 as the default for unspecified dimensions.
 
 	p = Parser(example)
 	et = p.parse()
